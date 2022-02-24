@@ -1,0 +1,27 @@
+<div>
+  <form action="" class="text-center my-20 bg-red-400">
+    <h1>Login</h1>
+    <div class="space-y-5">
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="email"
+        />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+        />
+      </div>
+      <button (click)="login()" class="bg-green-200 px-5 py-2 rounded-lg ">Login</button>
+      <a href="/register" class="block">Need an acc? Register here</a>
+    </div>
+  </form>
+</div>
