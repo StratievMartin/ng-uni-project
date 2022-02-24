@@ -5,6 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+<<<<<<< HEAD
+=======
+// import { CreateAdComponent } from './create-ad/create-ad.component';
+// import { EditAdComponent } from './edit-ad/edit-ad.component';
+// import { ListAdComponent } from './list-ad/list-ad.component';
+>>>>>>> d3bb0afa9808918fa2987b3cb6c02ffad83e374c
 import { AngularFireModule } from '@angular/fire/compat';
 // import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -19,6 +25,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
+<<<<<<< HEAD
+=======
+    // CreateAdComponent,
+    // EditAdComponent,
+    // ListAdComponent,
+>>>>>>> d3bb0afa9808918fa2987b3cb6c02ffad83e374c
   ],
   imports: [
     BrowserModule,
