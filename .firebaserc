@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-uni-project": {
+      "hosting": {
+        "my-app": [
+          "ng-uni-project"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-uni-project"
+  }
+}
