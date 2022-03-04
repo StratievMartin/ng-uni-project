@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth, } from '@angular/fire/compat/auth';
+import { getAuth, deleteUser } from "firebase/auth";
 import { Router } from '@angular/router';
 
 
@@ -8,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private fireauth: AngularFireAuth, private router: Router) {}
-  
+  constructor(private fireauth: AngularFireAuth, private router: Router) { }
+
   login(email: string, password: string) {
     this.fireauth.signInWithEmailAndPassword(email, password)
       .then(() => {
-        localStorage.setItem('loggedIn', 'true')
+        localStorage.setItem('loggedIn', email)
         this.router.navigate(['dashboard'])
       },
         err => {
@@ -38,11 +39,22 @@ export class AuthService {
     this.fireauth.signOut()
       .then(() => {
         localStorage.removeItem('loggedIn')
+        localStorage.removeItem('liked')
         this.router.navigate(['/login'])
       },
         err => {
           alert('Error')
           this.router.navigate(['/login'])
         })
+  }
+
+  deleteUser() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      console.log(user.uid);
+      deleteUser(user)
+      this.logout()
+    }
   }
 }

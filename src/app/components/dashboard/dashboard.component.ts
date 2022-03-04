@@ -11,7 +11,7 @@ import { DataService } from 'src/app/shared/data.service';
 export class DashboardComponent implements OnInit {
 
   jobAdsList: JobAd[] = [];
-  jobAdObj : JobAd = {
+  jobAdObj: JobAd = {
     id: '',
     heading: '',
     description: '',
@@ -20,12 +20,14 @@ export class DashboardComponent implements OnInit {
     category: ''
   }
 
-  id : string = '';
+  id: string = '';
   heading: string = "";
   description: string = "";
   likes: string = "";
   type: string = "";
   category: string = "";
+
+  loggedIn = localStorage.getItem('loggedIn')
 
   constructor(private auth: AuthService, private data: DataService) { }
 
@@ -36,49 +38,68 @@ export class DashboardComponent implements OnInit {
   logOut() {
     this.auth.logout()
   }
-
-  resetForm(){
-    this.id  = '';
+  deleteUser(){
+    this.auth.deleteUser()
+  }
+  resetForm() {
+    this.id = '';
     this.heading = "";
     this.description = "";
     this.likes = "";
     this.type = "";
     this.category = "";
   }
-
-  getAllAds(){
+  getAllAds() {
     this.data.getAllAds().subscribe(res => {
-      this.jobAdsList = res.map((el: any) =>{
+      this.jobAdsList = res.map((el: any) => {
         const data = el.payload.doc.data();
         data.id = el.payload.doc.id;
         return data
       })
-    }, err =>{
+    }, err => {
       alert('Fetching data error')
       console.log(err)
     })
   }
-  addAd(){
-    if(this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == ''){
+  addAd() {
+    if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
       alert('All fields are required!')
       return
     }
     this.jobAdObj.id = ''
-    this.jobAdObj.heading =this.heading 
-    this.jobAdObj.category =this.category 
-    this.jobAdObj.description =this.description 
-    this.jobAdObj.likes =this.likes 
-    this.jobAdObj.type =this.type 
+    this.jobAdObj.heading = this.heading
+    this.jobAdObj.category = this.category
+    this.jobAdObj.description = this.description
+    this.jobAdObj.likes = this.likes
+    this.jobAdObj.type = this.type
 
     this.data.addAd(this.jobAdObj)
     this.resetForm()
   }
-  updateAd(jobAd: JobAd){
+  updateAd(jobAd: JobAd) {
+    if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
+      alert('All fields are required!')
+      return
+    }
+    this.jobAdObj.id = ''
+    this.jobAdObj.heading = this.heading
+    this.jobAdObj.category = this.category
+    this.jobAdObj.description = this.description
+    this.jobAdObj.likes = this.likes
+    this.jobAdObj.type = this.type
+
+    this.data.updateAd(jobAd.id, this.jobAdObj)
+    this.resetForm()
     console.log(jobAd);
-     
   }
-  deleteAd(jobAd : JobAd){
-    if(window.confirm(`Are you sure you want to delete ${jobAd.heading}?`))
-    this.data.deleteAd(jobAd)
+  applyForAd(jobAd: JobAd) {
+    this.data.updateAd(jobAd.id, this.loggedIn)
+  }
+  deleteAd(jobAd: JobAd) {
+    if (window.confirm(`Are you sure you want to delete ${jobAd.heading}?`))
+      this.data.deleteAd(jobAd)
+  }
+  likeAd(jobAd: JobAd) {
+    localStorage.setItem('liked', jobAd.id)
   }
 }
