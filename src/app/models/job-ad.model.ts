@@ -1,4 +1,4 @@
-export class Ad{
+export class JobAd{
   id!: string;
   heading!: string;
   description!: string;
