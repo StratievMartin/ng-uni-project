@@ -1,4 +1,8 @@
 <div>
+  AddJobAdComponent
+  <!-- viewChild -->
+  <!-- input / outpu -->
+  <app-add-job-ad></app-add-job-ad>
   <div *ngIf="!loggedIn" class="text-center text-3xl">
     <a routerLink="/login">Login first</a>
   </div>
@@ -12,8 +16,10 @@
         Logout
       </button>
     </div>
+    <div>
+    <button (click)="showAdd=true">Add Ad</button>
     <div class="flex justify-between">
-      <form action="" class="text-center w-full my-20">
+      <form *ngIf="showAdd" action="" class="text-center w-full my-20">
         <h1>Add Ad</h1>
         <div class="space-y-5">
           <div>
@@ -143,6 +149,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </div></div>
   </div>
 </div>

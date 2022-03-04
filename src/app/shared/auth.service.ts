@@ -22,7 +22,6 @@ export class AuthService {
           this.router.navigate(['/login'])
         })
   }
-
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password)
       .then(() => {
@@ -34,7 +33,6 @@ export class AuthService {
           this.router.navigate(['/register'])
         })
   }
-
   logout() {
     this.fireauth.signOut()
       .then(() => {
@@ -47,7 +45,6 @@ export class AuthService {
           this.router.navigate(['/login'])
         })
   }
-
   deleteUser() {
     const auth = getAuth();
     const user = auth.currentUser;

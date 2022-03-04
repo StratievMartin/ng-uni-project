@@ -28,8 +28,11 @@ export class DashboardComponent implements OnInit {
   category: string = "";
 
   loggedIn = localStorage.getItem('loggedIn')
+  showAdd = false
 
-  constructor(private auth: AuthService, private data: DataService) { }
+  constructor(private auth: AuthService, private data: DataService) { 
+    // state
+  }
 
   ngOnInit(): void {
     this.getAllAds()
