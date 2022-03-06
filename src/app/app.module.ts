@@ -15,6 +15,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddJobAdComponent } from './components/add-job-ad/add-job-ad.component';
 import { JobAdDetailsComponent } from './components/job-ad-details/job-ad-details.component';
 import { JobAdsListComponent } from './components/job-ads-list/job-ads-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { JobAdComponent } from './components/job-ad/job-ad.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { JobAdsListComponent } from './components/job-ads-list/job-ads-list.comp
     AddJobAdComponent,
     JobAdDetailsComponent,
     JobAdsListComponent,
+    NavbarComponent,
+    JobAdComponent,
   ],
   imports: [
     BrowserModule,

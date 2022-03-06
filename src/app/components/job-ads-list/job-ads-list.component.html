@@ -1,1 +1,17 @@
-<p>job-ads-list works!</p>
+<div>
+  <!-- viewChild -->
+  <!-- input / outpu -->
+  <div *ngIf="!loggedIn" class="text-center text-3xl">
+    <a routerLink="/login">Login first</a>
+  </div>
+  <div *ngIf="loggedIn">
+    <div>
+      <div>
+        <div class="p-5 w-full">
+          <h1 class="text-3xl text-center my-5">All Job Ads</h1>
+          <app-job-ad></app-job-ad>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,9 @@ export class DataService {
   getAllAds(){
     return this.afs.collection('/JobAds').snapshotChanges();
   }
+  getSingleAd(id: any){
+    this.afs.collection('/JobAds').doc(id).get()
+  }
   updateAd(id: string, data: any) {
     return this.afs.collection('/JobAds').doc(id).update(data);
   }

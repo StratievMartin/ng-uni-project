@@ -10,12 +10,12 @@ export class RegisterComponent implements OnInit {
 
   email: string = '';
   password: string = '';
+  isAdmin: boolean = false
 
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
-
   register() {
     if (this.email == '') {
       alert('Please enter email')
@@ -25,8 +25,10 @@ export class RegisterComponent implements OnInit {
       alert('Please enter password')
       return;
     }
-
     this.auth.register(this.email, this.password)
+    if (this.isAdmin) {
+      localStorage.setItem('adminUser', 'true')
+    }
 
     this.email = ''
     this.password = ''

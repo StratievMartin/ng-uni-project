@@ -20,9 +20,20 @@
           [(ngModel)]="password"
         />
       </div>
+      <div>
+        <input
+          type="checkbox"
+          name="admin"
+          id="admin"
+          [(ngModel)]="isAdmin"
+          (click)="isAdmin = true; "
+        />
+        <label for="checkbox">Register as admin</label>
+      </div>
       <button (click)="register()" class="bg-green-300 px-5 py-2 rounded-lg">
         Register
       </button>
+
       <a routerLink="/login" class="block">Already have an acc? Login here</a>
     </div>
   </form>

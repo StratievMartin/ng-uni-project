@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   category: string = "";
 
   loggedIn = localStorage.getItem('loggedIn')
+  isAdmin = localStorage.getItem('adminUser')
   showAdd = false
 
   constructor(private auth: AuthService, private data: DataService) { 

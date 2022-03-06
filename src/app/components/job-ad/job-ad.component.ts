@@ -4,11 +4,12 @@ import { AuthService } from 'src/app/shared/auth.service';
 import { DataService } from 'src/app/shared/data.service';
 
 @Component({
-  selector: 'app-job-ads-list',
-  templateUrl: './job-ads-list.component.html',
-  styleUrls: ['./job-ads-list.component.scss']
+  selector: 'app-job-ad',
+  templateUrl: './job-ad.component.html',
+  styleUrls: ['./job-ad.component.scss']
 })
-export class JobAdsListComponent implements OnInit {
+export class JobAdComponent implements OnInit {
+
   jobAdsList: JobAd[] = [];
   jobAdObj: JobAd = {
     id: '',
@@ -29,15 +30,15 @@ export class JobAdsListComponent implements OnInit {
   loggedIn = localStorage.getItem('loggedIn')
   isAdmin = localStorage.getItem('adminUser')
   showAdd = false
-
-  constructor(private auth: AuthService, private data: DataService) { 
-    // state
-  }
+  
+  constructor(private auth: AuthService, private data: DataService) { }
 
   ngOnInit(): void {
     this.getAllAds()
+
   }
-  deleteUser(){
+
+  deleteUser() {
     this.auth.deleteUser()
   }
   resetForm() {
@@ -60,21 +61,21 @@ export class JobAdsListComponent implements OnInit {
       console.log(err)
     })
   }
-  // addAd() {
-  //   if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
-  //     alert('All fields are required!')
-  //     return
-  //   }
-  //   this.jobAdObj.id = ''
-  //   this.jobAdObj.heading = this.heading
-  //   this.jobAdObj.category = this.category
-  //   this.jobAdObj.description = this.description
-  //   this.jobAdObj.likes = this.likes
-  //   this.jobAdObj.type = this.type
+  addAd() {
+    if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
+      alert('All fields are required!')
+      return
+    }
+    this.jobAdObj.id = ''
+    this.jobAdObj.heading = this.heading
+    this.jobAdObj.category = this.category
+    this.jobAdObj.description = this.description
+    this.jobAdObj.likes = this.likes
+    this.jobAdObj.type = this.type
 
-  //   this.data.addAd(this.jobAdObj)
-  //   this.resetForm()
-  // }
+    this.data.addAd(this.jobAdObj)
+    this.resetForm()
+  }
   updateAd(jobAd: JobAd) {
     if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
       alert('All fields are required!')

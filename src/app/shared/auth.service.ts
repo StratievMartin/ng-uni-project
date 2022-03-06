@@ -15,7 +15,7 @@ export class AuthService {
     this.fireauth.signInWithEmailAndPassword(email, password)
       .then(() => {
         localStorage.setItem('loggedIn', email)
-        this.router.navigate(['dashboard'])
+        this.router.navigate(['ads'])
       },
         err => {
           alert(err.message)
@@ -38,6 +38,7 @@ export class AuthService {
       .then(() => {
         localStorage.removeItem('loggedIn')
         localStorage.removeItem('liked')
+        localStorage.removeItem('adminUser')
         this.router.navigate(['/login'])
       },
         err => {
