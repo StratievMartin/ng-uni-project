@@ -3,12 +3,18 @@
     <a routerLink="/ads" class="hover:text-white">Job Ads</a>
     <!-- if admin -->
     <a routerLink="/addAd" class="hover:text-white"
-      ><h1 class="bg-green-400 px-5 py-2 rounded-lg">Add a new job ad</h1></a
+      ><h1
+        class="border-2 border-red-700 hover:border-white px-5 py-2 rounded-lg"
+      >
+        Add a new job ad
+      </h1></a
     >
   </div>
   <div *ngIf="loggedIn" class="flex space-x-5">
     <a routerLink="/dashboard" class="hover:text-white">{{ loggedIn }}</a>
     <button class="hover:text-white" (click)="logOut()">Logout</button>
   </div>
-  <div *ngIf="!loggedIn" class="flex space-x-5 hover:text-white cursor-pointer">Login</div>
+  <div *ngIf="!loggedIn" class="flex space-x-5 hover:text-white cursor-pointer">
+    Login
+  </div>
 </div>

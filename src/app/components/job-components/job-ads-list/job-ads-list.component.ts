@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data-service/data.service';
   styleUrls: ['./job-ads-list.component.scss']
 })
 export class JobAdsListComponent implements OnInit {
+  
   jobAdsList: JobAd[] = [];
   jobAdObj: JobAd = {
     id: '',
