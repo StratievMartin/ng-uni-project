@@ -9,14 +9,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 // import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AddJobAdComponent } from './components/add-job-ad/add-job-ad.component';
-import { JobAdDetailsComponent } from './components/job-ad-details/job-ad-details.component';
-import { JobAdsListComponent } from './components/job-ads-list/job-ads-list.component';
+import { AddJobAdComponent } from './components/job-components/add-job-ad/add-job-ad.component';
+import { JobAdDetailsComponent } from './components/job-components/job-ad-details/job-ad-details.component';
+import { JobAdsListComponent } from './components/job-components/job-ads-list/job-ads-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { JobAdComponent } from './components/job-ad/job-ad.component';
+import { JobAdComponent } from './components/job-components/job-ad/job-ad.component';
 
 @NgModule({
   declarations: [

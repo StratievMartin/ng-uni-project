@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JobAd } from 'src/app/models/job-ad.model';
-import { DataService } from 'src/app/shared/data.service';
+import { DataService } from 'src/app/services/data-service/data.service';
 
 @Component({
   selector: 'app-add-job-ad',

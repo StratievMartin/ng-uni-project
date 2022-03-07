@@ -1,9 +1,9 @@
-<div>
-  <form action="" class="text-center">
+<div class="flex justify-center mt-20">
+  <form action="" class="space-y-5">
     <h1>Login</h1>
     <div class="space-y-5">
       <div>
-        <label for="email">Email</label>
+        <label for="email" class="block">Email</label>
         <input
           type="email"
           name="email"
@@ -12,7 +12,7 @@
         />
       </div>
       <div>
-        <label for="password">Password</label>
+        <label for="password" class="block">Password</label>
         <input
           type="password"
           name="password"
@@ -21,7 +21,7 @@
         />
       </div>
       <button (click)="login()" class="bg-green-300 px-5 py-2 rounded-lg ">Login</button>
-      <a routerLink="/register" class="block">Need an acc? Register here</a>
+      <a routerLink="/register" class="block text-red-500">Need an acc? Register here</a>
     </div>
   </form>
 </div>

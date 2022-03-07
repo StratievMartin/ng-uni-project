@@ -10,5 +10,5 @@
     <a routerLink="/dashboard" class="hover:text-white">{{ loggedIn }}</a>
     <button class="hover:text-white" (click)="logOut()">Logout</button>
   </div>
-  <div *ngIf="!loggedIn" class="flex space-x-5 hover:text-white">Login</div>
+  <div *ngIf="!loggedIn" class="flex space-x-5 hover:text-white cursor-pointer">Login</div>
 </div>

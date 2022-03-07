@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { JobAd } from '../models/job-ad.model';
+import { JobAd } from '../../models/job-ad.model';
 
 @Injectable({
   providedIn: 'root'

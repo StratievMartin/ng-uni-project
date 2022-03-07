@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobAd } from 'src/app/models/job-ad.model';
-import { AuthService } from 'src/app/shared/auth.service';
-import { DataService } from 'src/app/shared/data.service';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { DataService } from 'src/app/services/data-service/data.service';
 
 @Component({
   selector: 'app-dashboard',
