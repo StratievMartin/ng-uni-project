@@ -9,17 +9,22 @@ import { DataService } from 'src/app/shared/data.service';
 })
 export class JobAdDetailsComponent implements OnInit {
 
-  constructor(private data: DataService,private route: ActivatedRoute) { }
-  
+  constructor(private data: DataService, private route: ActivatedRoute) { }
+
   adId = this.route.snapshot.paramMap.get('id')
-  ad = []
+
+  ad = <any>{}
   ngOnInit(): void {
-    console.log(`id: ${this.adId}`);
     this.getSingleAd()
   }
-
-  getSingleAd(){
-    console.log(this.data.getSingleAd(this.adId));
-    
+  getSingleAd() {
+    this.data.getSingleAd(this.adId).subscribe(res => {
+      this.ad = res.payload.data()
+      console.log(this.ad);
+    },
+      err => {
+        console.debug(err);
+      }
+    )
   }
 }
