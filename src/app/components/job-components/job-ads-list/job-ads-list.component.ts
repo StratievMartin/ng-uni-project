@@ -9,7 +9,7 @@ import { DataService } from 'src/app/services/data-service/data.service';
   styleUrls: ['./job-ads-list.component.scss']
 })
 export class JobAdsListComponent implements OnInit {
-  
+
   jobAdsList: JobAd[] = [];
   jobAdObj: JobAd = {
     id: '',
@@ -31,13 +31,13 @@ export class JobAdsListComponent implements OnInit {
   isAdmin = localStorage.getItem('adminUser')
   showAdd = false
 
-  constructor(private auth: AuthService, private data: DataService) { 
+  constructor(private auth: AuthService, private data: DataService) {
   }
 
   ngOnInit(): void {
     this.getAllAds()
   }
-  deleteUser(){
+  deleteUser() {
     this.auth.deleteUser()
   }
   resetForm() {
