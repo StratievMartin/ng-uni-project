@@ -32,7 +32,6 @@ export class JobAdsListComponent implements OnInit {
   showAdd = false
 
   constructor(private auth: AuthService, private data: DataService) { 
-    // state
   }
 
   ngOnInit(): void {

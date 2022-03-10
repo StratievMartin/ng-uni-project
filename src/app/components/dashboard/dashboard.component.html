@@ -1,5 +1,5 @@
 <div>
-  <div class="flex justify-center mt-5">
+  <div class="flex justify-end mt-5 mr-5">
     <button
       class="border-2 px-5 py-2 bg-red-500 border-red-900 rounded-lg p-1"
       (click)="deleteUser()"
@@ -7,9 +7,9 @@
       DELETE ACC
     </button>
   </div>
-  <div class=" p-5 w-full ">
+  <div class="p-5 w-full">
     <div *ngIf="isAdmin">
-      <h1 class="text-center text-5xl">Your Ads</h1>
+      <h1 class="text-center text-3xl mb-5">Your Ads</h1>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div *ngFor="let a of ad">
           <a
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div *ngIf="!isAdmin">
-      <h1 class="text-center text-5xl">You candidatet for:</h1>
+      <h1 class="text-center text-3xl mb-5">You applied for:</h1>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div *ngFor="let a of ad">
           <a

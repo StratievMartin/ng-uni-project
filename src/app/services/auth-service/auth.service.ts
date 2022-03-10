@@ -20,11 +20,11 @@ export class AuthService {
     localStorage.setItem('adminUser', email)
   }
   login(email: string, password: string) {
-    if (email.split('@')[1] === 'admin.bg') {
-      this.setAdmin(email)
-    }
     this.fireauth.signInWithEmailAndPassword(email, password)
       .then(() => {
+        if (email.split('@')[1] === 'admin.bg') {
+          this.setAdmin(email)
+        }
         localStorage.setItem('loggedIn', email)
         this.router.navigate(['ads'])
       },
@@ -32,7 +32,6 @@ export class AuthService {
           alert(err.message)
           this.router.navigate(['/login'])
         })
-
   }
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password)

@@ -1,4 +1,4 @@
-<div class="flex justify-center mt-20">
+<div class="flex justify-center my-20">
   <div
     *ngIf="!showEdit"
     class="text-lg shadow-2xl p-5 border-4 border-black min-w-max"
@@ -31,8 +31,6 @@
             d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
           />
         </svg>
-        <div>{{ liked }}</div>
-        <div>{{ ad.id }}</div>
         <svg
           *ngIf="liked"
           xmlns="http://www.w3.org/2000/svg"
@@ -91,8 +89,18 @@
     </div>
   </div>
   <div *ngIf="showEdit">
-    <button (click)="showEdit = false">Cancel</button>
-    <h1 class="flex justify-center my-5 text-xl">Edit ******</h1>
+    <div class="flex justify-between my-5 ">
+      <div>
+        <h1>Editing</h1>
+        <span class="text-red-500">{{ ad.heading }}</span>
+      </div>
+      <button
+        (click)="showEdit = false"
+        class="px-5 py-2 rounded-lg bg-red-500"
+      >
+        Cancel
+      </button>
+    </div>
     <form class="flex justify-center">
       <div class="space-y-5">
         <div class="">
@@ -106,7 +114,7 @@
         </div>
         <div class="">
           <label for="desc" class="block">Description</label>
-          <textarea
+          <textarea class="w-full"
             name="desc"
             placeholder="Description"
             [(ngModel)]="ad.description"
@@ -123,7 +131,7 @@
         </div>
         <div>
           <label for="type" class="block">Type</label>
-          <select [(ngModel)]="ad.type" name="type" id="type">
+          <select [(ngModel)]="ad.type" name="type" id="type" class="w-full">
             <option value="Full-time">Full Time</option>
             <option value="Part-time">Part Time</option>
             <option value="Remote">Remote</option>
