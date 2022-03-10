@@ -1,54 +1,64 @@
 <!-- if admin -->
-<h1 class="flex justify-center my-5 text-xl">Create Job ad</h1>
-<form class="flex justify-center">
-  <div class="space-y-5">
-    <div class="">
-      <label for="heading" class="block">Heading</label>
-      <input
-        type="text"
-        name="heading"
-        placeholder="Heading"
-        [(ngModel)]="heading"
-      />
+<div *ngIf="!isAdmin" class="flex justify-center my-5 text-xl">
+  <div><h1>You are not admin</h1>
+    <a routerLink="/register" class="text-red-500">Register as admin here</a></div>
+</div>
+<div *ngIf="isAdmin">
+  <h1 class="flex justify-center my-5 text-xl">Create Job ad</h1>
+  <form class="flex justify-center">
+    <div class="space-y-5">
+      <div class="">
+        <label for="heading" class="block">Heading</label>
+        <input
+          type="text"
+          name="heading"
+          placeholder="Heading"
+          [(ngModel)]="heading"
+        />
+      </div>
+      <div class="">
+        <label for="desc" class="block">Description</label>
+        <textarea
+          name="desc"
+          placeholder="Description"
+          [(ngModel)]="description"
+        ></textarea>
+      </div>
+      <div class="">
+        <label for="likes" class="block">Likes</label>
+        <input
+          type="number"
+          name="likes"
+          placeholder="Likes"
+          [(ngModel)]="likes"
+        />
+      </div>
+      <div>
+        <label for="type" class="block">Type</label>
+        <select [(ngModel)]="type" name="type" id="type">
+          <option value="Full-time">Full Time</option>
+          <option value="Part-time">Part Time</option>
+          <option value="Remote">Remote</option>
+        </select>
+      </div>
+      <div>
+        <label for="category" class="block">Category</label>
+        <input
+          type="text"
+          name="category"
+          placeholder="Category"
+          [(ngModel)]="category"
+        />
+      </div>
+      <div class="flex justify-center">
+        <button
+          type="button"
+          (click)="addAd()"
+          class="bg-green-400 px-5 py-2 rounded-lg"
+        >
+          Add
+        </button>
+      </div>
     </div>
-    <div class="">
-      <label for="desc" class="block">Description</label>
-      <textarea
-        name="desc"
-        placeholder="Description"
-        [(ngModel)]="description"
-      ></textarea>
-    </div>
-    <div class="">
-      <label for="likes" class="block">Likes</label>
-      <input
-        type="number"
-        name="likes"
-        placeholder="Likes"
-        [(ngModel)]="likes"
-      />
-    </div>
-    <div>
-      <label for="type" class="block">Type</label>
-      <select [(ngModel)]="type" name="type" id="type">
-        <option value="Full-time">Full Time</option>
-        <option value="Part-time">Part Time</option>
-        <option value="Remote">Remote</option>
-      </select>
-    </div>
-    <div>
-      <label for="category" class="block">Category</label>
-      <input
-        type="text"
-        name="category"
-        placeholder="Category"
-        [(ngModel)]="category"
-      />
-    </div>
-    <div class="flex justify-center">
-      <button type="button" (click)="addAd()" class="bg-green-400 px-5 py-2 rounded-lg">
-        Add
-      </button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>

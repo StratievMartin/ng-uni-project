@@ -10,8 +10,19 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(private fireauth: AngularFireAuth, private router: Router) { }
-
+  loggedIn() {
+    return localStorage.getItem('loggedIn')
+  }
+  isAdmin() {
+    return localStorage.getItem('adminUser')
+  }
+  setAdmin(email: string) {
+    localStorage.setItem('adminUser', email)
+  }
   login(email: string, password: string) {
+    if (email.split('@')[1] === 'admin.bg') {
+      this.setAdmin(email)
+    }
     this.fireauth.signInWithEmailAndPassword(email, password)
       .then(() => {
         localStorage.setItem('loggedIn', email)
@@ -21,6 +32,7 @@ export class AuthService {
           alert(err.message)
           this.router.navigate(['/login'])
         })
+
   }
   register(email: string, password: string) {
     this.fireauth.createUserWithEmailAndPassword(email, password)
@@ -37,8 +49,8 @@ export class AuthService {
     this.fireauth.signOut()
       .then(() => {
         localStorage.removeItem('loggedIn')
-        localStorage.removeItem('liked')
         localStorage.removeItem('adminUser')
+        localStorage.removeItem('liked')
         this.router.navigate(['/login'])
       },
         err => {

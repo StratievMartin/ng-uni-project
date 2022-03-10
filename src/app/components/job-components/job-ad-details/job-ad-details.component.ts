@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobAd } from 'src/app/models/job-ad.model';
+import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { DataService } from 'src/app/services/data-service/data.service';
 
 @Component({
@@ -18,13 +19,17 @@ export class JobAdDetailsComponent implements OnInit {
     category: ''
   }
 
-  constructor(private data: DataService, private route: ActivatedRoute) { }
+  constructor(private data: DataService, private route: ActivatedRoute, private auth: AuthService) { }
 
-  loggedIn = localStorage.getItem('loggedIn')
+  isAdmin = this.auth.isAdmin()
+  loggedIn = this.auth.loggedIn()
+  liked = this.data.isLiked()
+
   adId = this.route.snapshot.paramMap.get('id')
   ad = <any>{}
   showEdit: boolean = false
-  candidates = <any> []
+  candidates = <any>[]
+
   ngOnInit(): void {
     this.getSingleAd()
   }
@@ -57,10 +62,11 @@ export class JobAdDetailsComponent implements OnInit {
   applyForAd() {
     const candidate = this.loggedIn
     this.candidates.push(candidate)
-    
+
     this.data.applyForAd(this.adId || '', { candidates: this.candidates })
   }
   likeAd() {
-    // localStorage.setItem('liked', jobAd.id)
+    console.log(this.adId);
+    this.data.likeAd(this.ad,this.adId || '')
   }
 }

@@ -17,6 +17,7 @@ import { JobAdDetailsComponent } from './components/job-components/job-ad-detail
 import { JobAdsListComponent } from './components/job-components/job-ads-list/job-ads-list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobAdComponent } from './components/job-components/job-ad/job-ad.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,6 @@ import { JobAdComponent } from './components/job-components/job-ad/job-ad.compon
     provideFirestore(() => getFirestore())
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,AuthGuard]
 })
 export class AppModule { }

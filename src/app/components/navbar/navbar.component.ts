@@ -8,8 +8,9 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  loggedIn = localStorage.getItem('loggedIn')
   constructor(private auth: AuthService) { }
+  loggedIn = this.auth.loggedIn()
+  isAdmin = this.auth.isAdmin()
 
   ngOnInit(): void {
   }

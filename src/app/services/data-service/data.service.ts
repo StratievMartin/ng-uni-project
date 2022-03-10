@@ -22,10 +22,10 @@ export class DataService {
   getSingleAd(id: any) {
     return this.afsRef.doc(id).snapshotChanges()
   }
-  getApplied(user: string) {
-    const candidatesRef =  this.afs.collection('/JobAds', ref => ref.where('candidates', '==', user));
-    return candidatesRef.snapshotChanges()
-  }
+  // getApplied(user: string) {
+  // const candidatesRef =  this.afs.collection('/JobAds', ref => ref.where('candidates', '==', user));
+  // return candidatesRef.snapshotChanges()
+  // }
   updateAd(id: string, data: any) {
     return this.afsRef.doc(id).update(data);
   }
@@ -37,7 +37,13 @@ export class DataService {
     this.router.navigate(['ads'])
     return this.afsRef.doc(id).delete();
   }
-  // likeAd(jobAd : JobAd){
-  //   localStorage.setItem('liked',jobAd.id)
-  // }
+  likeAd(jobAd: JobAd,id:string) {
+    console.log(jobAd);
+    id = this.afs.createId();
+    this.afs.collection('/LikedJobAds').add(jobAd)
+    localStorage.setItem('liked', id)
+  }
+  isLiked() {
+    return localStorage.getItem('liked')
+  }
 }

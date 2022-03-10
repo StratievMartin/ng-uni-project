@@ -26,9 +26,6 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.auth.register(this.email, this.password)
-    if (this.isAdmin) {
-      localStorage.setItem('adminUser', 'true')
-    }
 
     this.email = ''
     this.password = ''

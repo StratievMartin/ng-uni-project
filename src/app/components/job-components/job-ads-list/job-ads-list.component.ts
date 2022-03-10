@@ -61,21 +61,6 @@ export class JobAdsListComponent implements OnInit {
       console.log(err)
     })
   }
-  // addAd() {
-  //   if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
-  //     alert('All fields are required!')
-  //     return
-  //   }
-  //   this.jobAdObj.id = ''
-  //   this.jobAdObj.heading = this.heading
-  //   this.jobAdObj.category = this.category
-  //   this.jobAdObj.description = this.description
-  //   this.jobAdObj.likes = this.likes
-  //   this.jobAdObj.type = this.type
-
-  //   this.data.addAd(this.jobAdObj)
-  //   this.resetForm()
-  // }
   updateAd(jobAd: JobAd) {
     if (this.heading == '' || this.category == '' || this.description == '' || this.likes == '' || this.type == '') {
       alert('All fields are required!')

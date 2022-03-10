@@ -2,12 +2,23 @@
   <form action="" class="space-y-5">
     <h1>Register</h1>
     <div class="space-y-5">
+      <div class="space-x-2">
+        <input
+          type="checkbox"
+          name="admin"
+          id="admin"
+          [(ngModel)]="isAdmin"
+          (click)="isAdmin = true"
+        />
+        <label for="checkbox">Register as admin</label>
+      </div>
       <div>
+        <i *ngIf="isAdmin" class="text-gray-400">*example@admin.bg*</i>
         <label for="email" class="block">Email</label>
         <input
           type="email"
           name="email"
-          placeholder="Email"
+          [placeholder]="isAdmin? 'example@admin.bg':'Email'"
           [(ngModel)]="email"
         />
       </div>
@@ -20,18 +31,12 @@
           [(ngModel)]="password"
         />
       </div>
-      <div class="space-x-2">
-        <input
-          type="checkbox"
-          name="admin"
-          id="admin"
-          [(ngModel)]="isAdmin"
-          (click)="isAdmin = true; "
-        />
-        <label for="checkbox">Register as admin</label>
-      </div>
-      <button (click)="register()" class="bg-green-300 px-5 py-2 rounded-lg ">Login</button>
-      <a routerLink="/login" class="block text-red-500">Already have an acc? Login here</a>
+      <button (click)="register()" class="bg-green-300 px-5 py-2 rounded-lg">
+        Register
+      </button>
+      <a routerLink="/login" class="block text-red-500"
+        >Already have an acc? Login here</a
+      >
     </div>
   </form>
 </div>

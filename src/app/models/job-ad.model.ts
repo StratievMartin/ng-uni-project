@@ -5,6 +5,5 @@ export class JobAd{
   likes!: string;
   type!: string;
   category!: string;
+  author?: any;
 }
-// can have only 1 category
-// should have a list of all candidates for the current ad and if they are accepted or not 

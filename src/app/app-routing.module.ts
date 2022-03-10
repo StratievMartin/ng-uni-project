@@ -6,13 +6,14 @@ import { JobAdDetailsComponent } from './components/job-components/job-ad-detail
 import { JobAdsListComponent } from './components/job-components/job-ads-list/job-ads-list.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent,canActivate: [AuthGuard]}, 
   { path: 'ads', component: JobAdsListComponent },
-  { path: 'addAd', component: AddJobAdComponent },
-  { path: 'details/:id', component: JobAdDetailsComponent },
+  { path: 'addAd', component: AddJobAdComponent,canActivate: [AuthGuard]  },
+  { path: 'details/:id', component: JobAdDetailsComponent,canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 ];
